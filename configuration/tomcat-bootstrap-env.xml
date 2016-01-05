@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+	<property>
+		<name>tomcat_log_dir</name>
+		<value>/var/log/tomcat</value>
+		<description>Tomcat Log dir</description>
+	</property>
+	
+	<property>
+		<name>tomcat_pid_dir</name>
+		<value>/var/run</value>
+		<description>Dir containing process ID file</description>
+	</property>
+
+	<property>
+		<name>tomcat_user</name>
+		<value>tomcat</value>
+		<description>User tomcat daemon runs as</description>
+	</property>
+
+	<property>
+		<name>tomcat_group</name>
+		<value>tomcat</value>
+		<description>Tomcat group</description>
+	</property>
+
+	<property>
+		<name>tomcat_data_dir</name>
+		<value>/data/tomcat</value>
+		<description>Tomcat Data Dir</description>
+	</property>
+
+	
+
+</configuration>
