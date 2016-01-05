@@ -48,7 +48,7 @@ class Master(Script):
   def stop(self, env):
 	  import params
 	  import status_params
-	  Execute('/opt/tomcat-8.0.30/bin/catalina.sh stop >>' + params.tomcat_log_file, user= params.tomcat_user)
+	  Execute('/opt/tomcat-8.0.30/bin/shutdown.sh >>' + params.tomcat_log_file, user= params.tomcat_user)
 	  Execute('rm ' + status_params.tomcat_pid_file)
 	  
   def start(self, env):
@@ -56,18 +56,7 @@ class Master(Script):
 	  import status_params
 	  self.configure(env)
 	  Execute('echo pid file ' + status_params.tomcat_pid_file)
-	  Execute('/opt/tomcat/bin/catalina.sh start >>' + params.tomcat_log_file, user=params.tomcat_user)
-	
-  def status(self, env):
-	  import params
-	  import status_params
-	  check_process_status(status_params.tomcat_pid_file)
-	  Execute('/opt/tomcat/bin/catalina.sh status >>' + params.tomcat_log_file, user=params.tomcat_user)
-	
-  def set_conf_bin(self, env):
-	  import params
-	  params.conf_dir = os.path.join(*[params.tomcat_install_dir,params.tomcat_dirname,'conf'])
-	  params.bin_dir = os.path.join(*[params.tomcat_install_dir,params.tomcat_dirname,'bin'])
-
+	  Execute('/opt/tomcat-8.0.30/bin/startup.sh >>' + params.tomcat_log_file, user=params.tomcat_user)
+	  
 if __name__ == "__main__":
   Master().execute()
