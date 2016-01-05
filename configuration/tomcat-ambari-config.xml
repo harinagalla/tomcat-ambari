@@ -9,7 +9,7 @@
 	<property>
 		<name>tomcat.install_dir</name>
 		<value>/opt</value>
-		<description>Local dir where to install component. Redis folder will be created as a subdir of this dir e.g. /opt/redis-3.0.0</description>
+		<description>Local dir where to install component. tomcat folder will be created as a subdir of this dir e.g. /opt/tomcat-3.0.0</description>
 	</property>
 
 	<property>
