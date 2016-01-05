@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+  <!-- Define configuration paramaters for service: property name, default value and description (shown as help text) -->
+
+  <!-- service log file -->
+	<property>
+		<name>tomcat.install_dir</name>
+		<value>/opt</value>
+		<description>Local dir where to install component. Redis folder will be created as a subdir of this dir e.g. /opt/redis-3.0.0</description>
+	</property>
+
+	<property>
+		<name>tomcat.port</name>
+		<value>8080</value>
+		<description>Port tomcat runs on</description>
+	</property>
+
+  	<property>
+    		<name>tomcat.log</name>
+    		<value>/var/log/tomcat-amabri.log</value>
+    		<description>Log file for tomcat service commands used by amabari. Not the tomcat server logs</description>
+  	</property> 
+
+</configuration>
