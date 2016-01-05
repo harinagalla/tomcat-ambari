@@ -39,7 +39,7 @@
             </osSpecifics>
             <!-- names for config files (under configuration dir) -->
       	    <configuration-dependencies>
-        	<config-type>redis-config</config-type>
+        	<config-type>tomcat-config</config-type>
       	    </configuration-dependencies>
             <restartRequiredAfterChange>false</restartRequiredAfterChange>
         </service>
