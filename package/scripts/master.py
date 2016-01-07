@@ -6,7 +6,7 @@ class Master(Script):
   def install(self, env):
   	import params
   	import status_params
-  	stable_package = 'http://download.nextag.com/apache/tomcat/tomcat-8/v8.0.30/bin/apache-tomcat-8.0.30.tar.gz'
+  	stable_package = 'http://download.nextag.com/apache/tomcat/tomcat-8/v8.0.30/bin/apache-tomcat-8.0.30.zip'
   	service_packagedir = os.path.realpath(__file__).split('/scripts')[0]
   	
   	self.install_packages(env)
