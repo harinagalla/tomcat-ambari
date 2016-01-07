@@ -23,14 +23,14 @@ class Master(Script):
   	  )
   	Execute('touch ' + params.tomcat_log_file, user=params.tomcat_user)
   	Execute('rm -rf ' + params.tomcat_dir, ignore_failures=True)
+  	Execute('rm '+ params.temp_file)
   	Execute('mkdir -p ' + params.tomcat_dir)
   	Execute('chown -R ' + params.tomcat_user + ':' + params.tomcat_group + ' ' + params.tomcat_dir)
   	Execute('echo Installing pachages')
   	
   	if not os.path.exists(params.temp_file):
   	  Execute('wget ' + stable_package + ' -O ' + params.temp_file + ' -a ' + params.tomcat_log_file, user=params.tomcat_user)
-  	  Execute('tar xvf ' + params.temp_file+' -C ' + params.tomcat_install_dir +' --strip-components=1 >> ' + params.tomcat_log_file, user=params.tomcat_user)
-  	  Execute('cd '+params.tomcat_install_dir+'/tomcat-8.0.30')
+  	Execute('tar xvf ' + params.temp_file+' -C ' + params.tomcat_install_dir +' --strip-components=1 >> ' + params.tomcat_log_file, user=params.tomcat_user)
   	self.configure(env,True)
 	
   def create_linux_user(self, user, group):
