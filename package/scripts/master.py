@@ -23,7 +23,7 @@ class Master(Script):
   	  )
   	Execute('touch ' + params.tomcat_log_file, user=params.tomcat_user)
   	Execute('rm -rf ' + params.tomcat_dir, ignore_failures=True)
-  	Execute('rm '+ params.temp_file)
+  	Execute('rm '+ params.temp_file, ignore_failures=True)
   	Execute('mkdir -p ' + params.tomcat_dir)
   	Execute('chown -R ' + params.tomcat_user + ':' + params.tomcat_group + ' ' + params.tomcat_dir)
   	Execute('echo Installing pachages')
