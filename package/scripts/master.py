@@ -30,7 +30,7 @@ class Master(Script):
   	
   	if not os.path.exists(params.temp_file):
   	  Execute('wget ' + stable_package + ' -O ' + params.temp_file + ' -a ' + params.tomcat_log_file, user=params.tomcat_user)
-  	Execute('tar xvf ' + params.temp_file+' -C ' + params.tomcat_install_dir +' --strip-components=1 >> ' + params.tomcat_log_file, user=params.tomcat_user)
+  	Execute('tar xzvf ' + params.temp_file+' -C ' + params.tomcat_install_dir +' --strip-components=1 >> ' + params.tomcat_log_file, user=params.tomcat_user)
   	self.configure(env,True)
 	
   def create_linux_user(self, user, group):
