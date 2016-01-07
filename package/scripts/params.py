@@ -8,7 +8,7 @@ from resource_management.libraries.functions.default import default
 # config object that holds the configurations declared in the config xml file
 config = Script.get_config()
 
-tomcat_dirname = 'tomcat-8.0.30'
+tomcat_dirname = 'apache-tomcat-8.0.30'
 
 #params from tomcat-ambari-config
 tomcat_install_dir = config['configurations']['tomcat-ambari-config']['tomcat.install_dir']
