@@ -49,13 +49,12 @@ class Master(Script):
 	  import params
 	  import status_params
 	  Execute('/opt/apache-tomcat-8.0.30/bin/shutdown.sh >>' + params.tomcat_log_file, user= params.tomcat_user)
-	  Execute('rm ' + status_params.tomcat_pid_file)
+
 	  
   def start(self, env):
 	  import params
 	  import status_params
 	  self.configure(env)
-	  Execute('echo pid file ' + status_params.tomcat_pid_file)
 	  Execute('/opt/apache-tomcat-8.0.30/bin/startup.sh >>' + params.tomcat_log_file, user=params.tomcat_user)
 	  
 if __name__ == "__main__":
