@@ -59,8 +59,8 @@ class Master(Script):
 	  self.set_conf_bin(env)
 	  Execute('echo pid file ' + status_params.tomcat_pid_file)
 	  
-	  Execute(params.bin_dir+'/startup.sh start >> ' + params.tomcat_log_file, user=params.tomcat_user)
-	  Execute('cp '+ status_params.tomcat_pid_file + ' '+params.bin_dir+'/tomcat.pid')
+	  Execute(+params.bin_dir+'/startup.sh start >> ' + params.tomcat_log_file, user=params.tomcat_user)
+	  
 	  Execute('cat '+params.bin_dir+'/tomcat.pid'+" | grep pid | sed 's/pid=\(\.*\)/\\1/' > " + status_params.tomcat_pid_file)
     	  Execute('chown '+params.tomcat_user+':'+params.tomcat_group+' ' + status_params.tomcat_pid_file)
 	  
