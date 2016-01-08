@@ -1,6 +1,7 @@
 import sys, os, pwd, grp, signal, time, glob
 from resource_management import *
 from subprocess import call
+from subprocess import check_output
 
 class Master(Script):
   def install(self, env):
@@ -32,6 +33,18 @@ class Master(Script):
   	  Execute('wget ' + stable_package + ' -O ' + params.temp_file + ' -a ' + params.tomcat_log_file, user=params.tomcat_user)
   	Execute('tar xvf ' + params.temp_file+' -C ' + params.tomcat_install_dir +'/'+ params.tomcat_dirname + ' --strip-components=1 >> ' + params.tomcat_log_file, user=params.tomcat_user)
   	self.configure(env,True)
+  	
+  def save_pid(pid, status_params.tomcat_pid_file):
+  	  try:
+	    pfile = open(status_params.tomcat_pid_file, "w")
+	    pfile.write("%s\n" % pid)
+  	 except IOError:
+	    pass
+  	finally:
+	  try:
+	   pfile.close()
+    	 except:
+	   pass
 	
   def create_linux_user(self, user, group):
 	  try: pwd.getpwnam(user)
@@ -57,6 +70,9 @@ class Master(Script):
 	  import status_params
 	  self.configure(env)
 	  self.set_conf_bin(env)
+	  pid = check_output(["pidof",tomcat])
+	  Execute('echo pid is '+pid)
+	  save_pid(pid, status_params.tomcat_pid_file)
 	  Execute('echo pid file ' + status_params.tomcat_pid_file)
 	  
 	  Execute(params.bin_dir+'/startup.sh start >> ' + params.tomcat_log_file, user=params.tomcat_user)
@@ -64,6 +80,7 @@ class Master(Script):
 	  Execute('cat '+params.bin_dir+'/tomcat.pid'+" | grep pid | sed 's/pid=\(\.*\)/\\1/' > " + status_params.tomcat_pid_file)
     	  Execute('chown '+params.tomcat_user+':'+params.tomcat_group+' ' + status_params.tomcat_pid_file)
 	  
+    
   def status(self, env):
     	import status_params       
     	check_process_status(status_params.tomcat_pid_file)
