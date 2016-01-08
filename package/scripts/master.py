@@ -49,13 +49,29 @@ class Master(Script):
 	  import params
 	  import status_params
 	  Execute('/opt/apache-tomcat-8.0.30/bin/shutdown.sh >>' + params.tomcat_log_file, user= params.tomcat_user)
+	  Execute ('rm ' + status_params.tomcat_pid_file)
 
 	  
   def start(self, env):
 	  import params
 	  import status_params
 	  self.configure(env)
-	  Execute('/opt/apache-tomcat-8.0.30/bin/startup.sh >>' + params.tomcat_log_file, user=params.tomcat_user)
+	  self.set_conf_bin(env)
+	  Execute('echo pid file ' + status_params.tomcat_pid_file)
+	  Execute('echo JAVA_HOME=' + params.jdk64_home)
+	  Execute('export JAVA_HOME='+params.jdk64_home+';'+params.bin_dir+'/startup.sh start >> ' + params.tomcat_log_file, user=params.tomcat_user)
+	  Execute('cp '+ status_params.tomcat_pid_file + ' '+params.bin_dir+'/tomcat.pid')
+	  Execute('cat '+params.bin_dir+'/tomcat.pid'+" | grep pid | sed 's/pid=\(\.*\)/\\1/' > " + status_params.tomcat_pid_file)
+    	  Execute('chown '+params.tomcat_user+':'+params.tomcat_group+' ' + status_params.tomcat_pid_file)
+	  
+  def status(self, env):
+    	import status_params       
+    	check_process_status(status_params.tomcat_pid_file)
+	  
+  def set_conf_bin(self, env):
+    	import params
+	params.conf_dir = os.path.join(*[params.tomcat_install_dir,params.tomcat_dirname,'conf'])
+    	params.bin_dir = os.path.join(*[params.tomcat_install_dir,params.tomcat_dirname,'bin'])
 	  
 if __name__ == "__main__":
   Master().execute()
