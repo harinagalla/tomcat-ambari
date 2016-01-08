@@ -30,7 +30,7 @@
             <!-- what yum packages need to be installed -->
             <osSpecifics>
               <osSpecific>
-                <osFamily>redhat6</osFamily>
+                <osFamily>centos6</osFamily>
                 <packages>
 			<package><name>gcc*</name></package>
 			<package><name>tcl</name></package>
