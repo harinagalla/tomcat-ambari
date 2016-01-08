@@ -2,6 +2,7 @@ import sys, os, pwd, grp, signal, time, glob
 from resource_management import *
 from subprocess import call
 from subprocess import check_output
+from status_params import tomcat_pid_file
 
 class Master(Script):
   def install(self, env):
@@ -34,9 +35,9 @@ class Master(Script):
   	Execute('tar xvf ' + params.temp_file+' -C ' + params.tomcat_install_dir +'/'+ params.tomcat_dirname + ' --strip-components=1 >> ' + params.tomcat_log_file, user=params.tomcat_user)
   	self.configure(env,True)
   	
-  def save_pid(pid, status_params.tomcat_pid_file):
+  def save_pid(pid, tomcat_pid_file):
   	  try:
-	    pfile = open(status_params.tomcat_pid_file, "w")
+	    pfile = open(tomcat_pid_file, "w")
 	    pfile.write("%s\n" % pid)
   	 except IOError:
 	    pass
