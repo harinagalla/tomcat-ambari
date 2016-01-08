@@ -1,8 +1,6 @@
 import sys, os, pwd, grp, signal, time, glob
 from resource_management import *
 from subprocess import call
-from subprocess import check_output
-from status_params import tomcat_pid_file
 
 class Master(Script):
   def install(self, env):
@@ -35,12 +33,6 @@ class Master(Script):
   	Execute('tar xvf ' + params.temp_file+' -C ' + params.tomcat_install_dir +'/'+ params.tomcat_dirname + ' --strip-components=1 >> ' + params.tomcat_log_file, user=params.tomcat_user)
   	self.configure(env,True)
   	
-  def save_pid(pid, tomcat_pid_file):
-	  pfile = open(tomcat_pid_file, "w")
-	  pfile.write("%s\n" % pid)
-	  pfile.close()
-    	
-	
   def create_linux_user(self, user, group):
 	  try: pwd.getpwnam(user)
 	  except KeyError: Execute('adduser ' + user)
@@ -65,9 +57,6 @@ class Master(Script):
 	  import status_params
 	  self.configure(env)
 	  self.set_conf_bin(env)
-	  pid = check_output(["pidof",tomcat])
-	  Execute('echo pid is '+pid)
-	  save_pid(pid, status_params.tomcat_pid_file)
 	  Execute('echo pid file ' + status_params.tomcat_pid_file)
 	  
 	  Execute(params.bin_dir+'/startup.sh start >> ' + params.tomcat_log_file, user=params.tomcat_user)
