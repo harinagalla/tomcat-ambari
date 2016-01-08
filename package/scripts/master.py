@@ -36,16 +36,10 @@ class Master(Script):
   	self.configure(env,True)
   	
   def save_pid(pid, tomcat_pid_file):
-  	  try:
-	    pfile = open(tomcat_pid_file, "w")
-	    pfile.write("%s\n" % pid)
-  	 except IOError:
-	    pass
-  	finally:
-	  try:
-	   pfile.close()
-    	 except:
-	   pass
+	  pfile = open(tomcat_pid_file, "w")
+	  pfile.write("%s\n" % pid)
+	  pfile.close()
+    	
 	
   def create_linux_user(self, user, group):
 	  try: pwd.getpwnam(user)
