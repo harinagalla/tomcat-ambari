@@ -20,7 +20,7 @@
 
   	<property>
     		<name>tomcat.log</name>
-    		<value>/var/log/tomcat-amabri.log</value>
+    		<value>/var/log/tomcat/tomcat_setup.log</value>
     		<description>Log file for tomcat service commands used by amabari. Not the tomcat server logs</description>
   	</property> 
 
