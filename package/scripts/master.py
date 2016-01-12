@@ -62,7 +62,7 @@ class Master(Script):
     	  #Execute('chown '+params.tomcat_user+':'+params.tomcat_group+' ' + status_params.tomcat_pid_file)
     	  #Execute('touch ' + params.tomcat_lock_file)
 	  #Execute('chown ' + params.tomcat_user + ':' + params.tomcat_group + ' ' + params.tomcat_lock_file)
-	  Execute('params.bin_dir+'/startup.sh >> ' + params.tomcat_log_file, user= params.tomcat_user)
+	  Execute(params.bin_dir+'/startup.sh >> ' + params.tomcat_log_file, user= params.tomcat_user)
 	  Execute('ps -ef | grep -i tomcat | awk {\'print $2\'} | head -n 1 > ' + status_params.tomcat_pid_file, user= params.tomcat_user)
 	  
     
