@@ -10,7 +10,7 @@
 	
 	<property>
 		<name>tomcat_pid_dir</name>
-		<value>/var/run</value>
+		<value>/var/run/tomcat</value>
 		<description>Dir containing process ID file</description>
 	</property>
 
@@ -25,13 +25,4 @@
 		<value>tomcat</value>
 		<description>Tomcat group</description>
 	</property>
-
-	<property>
-		<name>tomcat_data_dir</name>
-		<value>/data/tomcat</value>
-		<description>Tomcat Data Dir</description>
-	</property>
-
-	
-
 </configuration>
