@@ -47,22 +47,23 @@ class Master(Script):
 	  
   def stop(self, env):
 	  import params
-	  import status_params
-	  Execute('/opt/apache-tomcat-8.0.30/bin/shutdown.sh >>' + params.tomcat_log_file, user= params.tomcat_user)
-	  Execute ('rm ' + status_params.tomcat_pid_file)
+	  Execute(params.bin_dir+'/shutdown.sh >>' + params.tomcat_log_file, user= params.tomcat_user)
 
-	  
   def start(self, env):
 	  import params
 	  import status_params
 	  self.configure(env)
 	  self.set_conf_bin(env)
-	  Execute('echo pid file ' + status_params.tomcat_pid_file)
+	  #Execute('echo pid file ' + status_params.tomcat_pid_file)
 	  
-	  Execute(params.bin_dir+'/startup.sh start >> ' + params.tomcat_log_file, user=params.tomcat_user)
+	 #Execute(params.bin_dir+'/startup.sh >> ' + params.tomcat_log_file, user=params.tomcat_user)
 	  
-	  Execute('cat '+params.bin_dir+'/tomcat.pid'+" | grep pid | sed 's/pid=\(\.*\)/\\1/' > " + status_params.tomcat_pid_file)
-    	  Execute('chown '+params.tomcat_user+':'+params.tomcat_group+' ' + status_params.tomcat_pid_file)
+	  #Execute('cat '+params.bin_dir+'/tomcat.pid'+" | grep pid | sed 's/pid=\(\.*\)/\\1/' > " + status_params.tomcat_pid_file)
+    	  #Execute('chown '+params.tomcat_user+':'+params.tomcat_group+' ' + status_params.tomcat_pid_file)
+    	  #Execute('touch ' + params.tomcat_lock_file)
+	  #Execute('chown ' + params.tomcat_user + ':' + params.tomcat_group + ' ' + params.tomcat_lock_file)
+	  Execute('params.bin_dir+'/startup.sh >> ' + params.tomcat_log_file, user= params.tomcat_user)
+	  Execute('ps -ef | grep -i tomcat | awk {\'print $2\'} | head -n 1 > ' + status_params.tomcat_pid_file, user= params.tomcat_user)
 	  
     
   def status(self, env):
