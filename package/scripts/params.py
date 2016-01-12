@@ -26,7 +26,7 @@ tomcat_group = config['configurations']['tomcat-bootstrap-env']['tomcat_group']
 tomcat_log_dir = config['configurations']['tomcat-bootstrap-env']['tomcat_log_dir']
 tomcat_log_file = os.path.join(tomcat_log_dir,'tomcat_setup.log')
 
-#tomcat_lock_file = '/var/lock/subsys/tomcat'
+tomcat_lock_file = '/var/lock/subsys/tomcat'
 
 
 temp_file='/tmp/'+tomcat_dirname+'.zip'
