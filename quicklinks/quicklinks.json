@@ -13,11 +13,11 @@
                   "url" : "%@://%@:%@/manager/status",
                   "template" : "%@://%@:%@/manager/status",
                   "port" : {
-                    "regex" : "\\w*:(\\d+)",
+                    "regex" : "^(\\d+)$",
                     "site" : "tomcat-ambari-config",
-                    "http_property" : "tomcat.webapp.http.address",
+                    "http_property" : "tomcat.port",
                     "http_default_port" : "8080",
-                    "https_property": "tomcat.webapp.http.address",
+                    "https_property": "tomcat.port",
                     "https_default_port": "8080"
                   },
                   "requires_user_name" : "true"
@@ -28,11 +28,11 @@
                   "url" : "%@://%@:%@/manager/html",
                   "template" : "%@://%@:%@/manager/html",
                   "port" : {
-                    "regex" : "\\w*:(\\d+)",
+                    "regex" : "^(\\d+)$",
                     "site" : "tomcat-ambari-config",
-                    "http_property" : "tomcat.webapp.http.address",
+                    "http_property" : "tomcat.port",
                     "http_default_port" : "8080",
-                    "https_property": "tomcat.webapp.http.address",
+                    "https_property": "tomcat.port",
                     "https_default_port": "8080"
                   },
                   "requires_user_name" : "true"
@@ -43,11 +43,11 @@
                   "url" : "%@://%@:%@/host-manager/html",
                   "template" : "%@://%@:%@/host-manager/html",
                   "port" : {
-                    "regex" : "\\w*:(\\d+)",
+                    "regex" : "^(\\d+)$",
                     "site" : "tomcat-ambari-config",
-                    "http_property" : "tomcat.webapp.http.address",
+                    "http_property" : "tomcat.port",
                     "http_default_port" : "8080",
-                    "https_property": "tomcat.webapp.http.address",
+                    "https_property": "tomcat.port",
                     "https_default_port": "8080"
                   },
                   "requires_user_name" : "true"
