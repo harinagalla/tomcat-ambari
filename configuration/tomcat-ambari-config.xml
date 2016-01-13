@@ -23,5 +23,11 @@
     		<value>/var/log/tomcat/tomcat.log</value>
     		<description>Log file for tomcat service commands used by amabari. Not the tomcat server logs</description>
   	</property> 
+  	
+  	<property>
+		<name>tomcat.webapp.http.address</name>
+		<value> </value>
+		
+	</property>
 
 </configuration>
