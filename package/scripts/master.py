@@ -47,7 +47,7 @@ class Master(Script):
 	  
   def stop(self, env):
 	  import params
-	  Execute(+params.bin_dir+'/shutdown.sh >>' + params.tomcat_log_file, user= params.tomcat_user)
+	  Execute(params.bin_dir+'/shutdown.sh >>' + params.tomcat_log_file, user= params.tomcat_user)
 	  Execute('rm '+status_params.tomcat_pid_file)
 
   def start(self, env):
