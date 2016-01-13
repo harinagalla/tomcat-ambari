@@ -1,0 +1,58 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol":
+    {
+      "type":"HTTP_ONLY"
+    },
+    "links" : [
+                {
+                  "name" : "server_status",
+                  "label" : "Server Status",
+                  "url" : "%@://%@:%@/manager/status",
+                  "template" : "%@://%@:%@/manager/status",
+                  "port" : {
+                    "regex" : "\\w*:(\\d+)",
+                    "site" : "tomcat-ambari-config",
+                    "http_property" : "tomcat.webapp.http.address",
+                    "http_default_port" : "8080",
+                    "https_property": "tomcat.webapp.http.address",
+                    "https_default_port": "8080"
+                  },
+                  "requires_user_name" : "true"
+                },
+                {
+                  "name" : "manager_app",
+                  "label" : "Manager App",
+                  "url" : "%@://%@:%@/manager/html",
+                  "template" : "%@://%@:%@/manager/html",
+                  "port" : {
+                    "regex" : "\\w*:(\\d+)",
+                    "site" : "tomcat-ambari-config",
+                    "http_property" : "tomcat.webapp.http.address",
+                    "http_default_port" : "8080",
+                    "https_property": "tomcat.webapp.http.address",
+                    "https_default_port": "8080"
+                  },
+                  "requires_user_name" : "true"
+                },
+                {
+                  "name" : "host_manager",
+                  "label" : "Host Manager",
+                  "url" : "%@://%@:%@/host-manager/html",
+                  "template" : "%@://%@:%@/host-manager/html",
+                  "port" : {
+                    "regex" : "\\w*:(\\d+)",
+                    "site" : "tomcat-ambari-config",
+                    "http_property" : "tomcat.webapp.http.address",
+                    "http_default_port" : "8080",
+                    "https_property": "tomcat.webapp.http.address",
+                    "https_default_port": "8080"
+                  },
+                  "requires_user_name" : "true"
+                }
+              ]
+  }
+}
+
