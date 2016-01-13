@@ -25,7 +25,7 @@
   	</property> 
   	
   	<property>
-		<name>tomcat.webapp.http.address</name>
+		<name>tomcat.webapp.address</name>
 		<value> </value>
 		
 	</property>
